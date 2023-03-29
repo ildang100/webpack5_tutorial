@@ -1,21 +1,15 @@
 const path = require('path');
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'webpack-numbers.js',
-    library: {
-      name: "webpackNumbers",
-      type: "umd"
+module.exports = (env) => {
+  // 여기에서 env.<변수> 를 사용하세요.
+  console.log('Goal: ', env.goal); // 'local'
+  console.log('Production: ', env.production); // true
+
+  return {
+    entry: './src/index.js',
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist'),
     },
-  },
-  externals: {
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: 'lodash',
-      root: '_',
-    },
-  },
+  };
 };
